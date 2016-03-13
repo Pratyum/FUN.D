@@ -1,0 +1,1024 @@
+<head>
+  <title>simple-todos</title>
+
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="lib/codemirror.js"></script>
+  <link rel="stylesheet" href="lib/codemirror.css">
+  <script src="/js/codemirror-compressed.js"></script>
+
+</head>
+
+<body>
+
+ </body>
+
+
+<template name = "main">
+  {{>navbar}}
+    {{>yield}}
+  {{>footer}}
+</template>
+
+
+<template name ="options">
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i><img src="/img/facebook.jpg" style="max-width:200px;max-height:200px;"></i></h2>
+            <h5 class="center">Facebook Code for Charity</h5> 
+            <p class="light" align = "middle">Attention Geeks! Donating just got more interesting! Come hack with us to find out!</p>
+            <div class="container" align="middle"><div class="chip">HTML5</div><div class="chip">CSS3</div><div class="chip">React</div></div>
+            <br><br>
+            <p class="light" align = "middle"><a class="waves-effect waves-light btn blue" id="tanvi" href="/facebook">Join</a></p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i><img src="/img/ieee.jpg" style="max-width:200px;max-height:200px;"></i></h2>
+            <h5 class="center">IEEE Code for Good</h5>
+            <p class="light" align = "middle">Attention Geeks! Donating just got more interesting! Come hack with us to find out!</p>
+             <div class="container" align="middle"><div class="chip">Javascript</div><div class="chip">Algorithms</div></div>
+            <br><br>
+            <p class="light" align = "middle"><a class="waves-effect waves-light btn blue" align = "middle" href="/ieee">Join</a></p>
+          </div>  
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i><img src="/img/paypal.png" style="max-width:200px;max-height:200px;"></i></h2>
+            <h5 class="center">PayPal Code for the Better</h5>
+            <p class="light" align = "middle">Attention Geeks! Donating just got more interesting! Come hack with us to find out!</p>
+             <div class="container" align="middle"><div class="chip">Meteor.js</div><div class="chip">Big Data</div></div>
+            <br><br>
+            <p class="light" align = "middle"><a class="waves-effect waves-light btn blue" align = "middle" href="/paypal">Join</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <br><br>
+  </div>
+
+  <div id="div1"></div>
+</template>
+
+
+<template name = "navbar">
+  <nav style="background-color:#FFA62F;" role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo"><img src="/img/logo.png" style="max-height: 64px;"></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/">Featured Events</a></li>
+      <li><a href="/contact">About Us</a></li>
+      {{#if currentUser}}
+        <li><a href="/profile">Profile</a></li>
+      {{/if}}
+      <li><a href="#">{{> loginButtons}}</a></li>
+    </ul>
+
+    <ul id="nav-mobile" class="side-nav">
+      <li><a href="/">Featured Events</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">{{> loginButtons}}</a></li>
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+  </div>
+  </nav>
+</template>
+
+
+<template name="jumbotron">
+
+    <div style="background-image:url(/img/coding.jpg); background-size: cover;" class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center orange-text">FUN.D$</h1>
+      <div class="row center">
+        <h3 class="header col s12 blue-text">Decode.Develop.Donate</h3>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  {{> options}}
+</template>
+
+<template name="footer">
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">We aim to make donating an interesting experience for you. Complete the engaging code challenges and donate money to the charity of your choice as you progress through progressive levels of difficulty.</p>
+        </div>
+        
+        <div class="col l6 s12" align = "right">
+          <h5 class="white-text">Contact Us</h5>
+          <ul>
+            <li><a class="white-text" href="#!">      Tanvi Gupta  : +65 12345678</a></li>
+            <li><a class="white-text" href="#!">Pratyum Jagannath  : +65 12345678</a></li>
+            <li><a class="white-text" href="#!">     Abhay Nainan  : +65 12345678</a></li>
+            <li><form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_donations">
+        <input type="hidden" name="business" value="tanvi20597@gmail.com">
+        <input type="hidden" name="lc" value="US">
+        <input type="hidden" name="item_name" value="ClickerQuiz">
+        <input type="hidden" name="no_note" value="0">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+
+      </form></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container" align = "middle">
+      &copy; Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">ClickerQuiz</a>
+      </div>
+    </div>
+  </footer>
+
+</template>
+
+<template name="contact">
+  <br><br><br><br>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info" vertical-align = "middle">
+            <div class="panel-heading blue">
+              <h2 class="panel-title white-text" align = "middle" ><b>> Contact Us!</b></h2>
+            </div>
+            <div class="panel-body">
+            
+              <div class="row" align = "middle" style ="color: #151B54">
+
+              <p>TClickerQuiz proudly presents you with this application where geeks and coding enthusiasts put their mind to the test and help out the less fortunate while doing so. We have skillfully crafted a mechanism where companies ready to give back to the society can do so in a more interactive way. Also there are many people in the software industry, whose work does not allow them to make time for charity events. Hence we decided to bridge the gap between the two by proposing a solution. We created an online charity fundraiser 'FUN.D' with a twist. Software enthusiasts get to solve challenges and puzzles in code to increase the funds that the host company donates. In addition, they can also donate to the cause directly. The host can make use of this platform to collect data in the form of solutions to their code challenges, which can be implemented by the company for further research.
+              </p>
+              </div>
+              <div class="row" align = "middle" style ="color: #151B54">
+                <h4>> Hackers at FUN.D!</h4>
+              <ul>
+                <li><h5 class="blue-text" href="#">      Tanvi Gupta  : +65 12345678</h5></li>
+                <li><h5 class="blue-text" href="#">Pratyum Jagannath  : +65 12345678</h5></li>
+                <li><h5 class="blue-text" href="#">     Abhay Nainan  : +65 12345678</h5></li>
+              </ul>
+              </div>
+            </div>
+          </div>
+  </div>  
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</template>
+
+<template name="Post">
+  <h1>Post: {{title}}</h1>
+</template>
+
+
+
+<template name="profile">
+  
+<br><br><br>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text" align = "center"><b>Pratyum Jagan</b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/img/profile_pic.jpg" class="img-circle img-responsive"> </div>
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Department</td>
+                        <td id = "department_holder">Computer Engineer</td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td id = "dob_holder">05/21/1996</td>
+                      </tr>
+                      <tr>
+                        <td>Gender</td>
+                        <td id="gender_holder">Male</td>
+                      </tr>
+                      <tr>
+                        <td>Home Address</td>
+                        <td id="address_holder">Singapore</td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td id="email_holder"><a href="mailto:pratyum96@gmail.com">pratyum96@gmail.com</a></td>
+                      </tr>
+                      <tr>
+                        <td>Phone Number</td>
+                        <td id="ph_holder">+65 9610 6009
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Skills</td>
+                        <td><div class="chip">EAT</div><div class="chip">HACK</div><div class="chip">REPEAT</div></td>
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+            
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                       <a class="btn-floating btn-large waves-effect waves-light blue" ><i class="glyphicon glyphicon-envelope" ></i></a>
+                        <span class="pull-right">
+                            <a class="btn-floating btn-large waves-effect waves-light blue" href="/profile/edit"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a class="btn-floating btn-large waves-effect waves-light blue"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>
+            
+          </div>
+  </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</template>
+
+
+<template name="profileEdit">
+  
+<br><br><br>
+
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+          
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text" align = "center"><b>Pratyum Jagan</b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/img/profile_pic.jpg" class="img-circle img-responsive"> </div>
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <form id="editForm">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Department</td>
+                        <td><input value="Computer Engineer" id="first_name2" type="text" class="validate"><label class="active" for="first_name2">Department</label></td>
+                      </tr>
+                      <tr>
+                        <td>Date of Birth</td>
+                        <td><input type="date" class="datepicker"></td>
+                        <script type="text/javascript">
+                          $('.datepicker').pickadate({
+                            selectMonths: true, // Creates a dropdown to control month
+                            selectYears: 15 // Creates a dropdown of 15 years to control year
+                          });
+                        </script>
+                      </tr>
+                      <tr>
+                        <td>Gender</td>
+                        <td> 
+                        
+      <input name="gender" type="radio" id="male" />
+      <label for="male">Male</label>
+      <input name="gender" type="radio" id="female" />
+      <label for="female">Female</label>
+
+                      </td>
+                      </tr>
+                      <tr>
+                        <td>Home Address</td>
+                        <td ><textarea id="address" class="materialize-textarea">Singapore</textarea></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><input id="email" type="email" class="validate" value="pratyum96@gmail.com">
+                            <label for="email" data-error="wrong" data-success="right">Email</label></td>
+                      </tr>
+                      <tr>
+                        <td>Phone Number</td>
+                        <td><input id="telephone" type="tel" class="validate" value="96106009">
+                            <label for="telephone">Telephone</label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Skills</td>
+                        <td><div class="chip">EAT</div><div class="chip">HACK</div><div class="chip">REPEAT</div></td>
+                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  </form>
+                </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+                       <a class="btn-floating btn-large waves-effect waves-light blue" onclick="myFunction()" href="/profile"><i class="glyphicon glyphicon-ok" ></i></a>
+                        <span class="pull-right">
+                            <a class="btn-floating btn-large waves-effect waves-light blue"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div>
+            
+          </div>
+  </div>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("editForm");
+    console.log(x.elements[0].value);
+    console.log(x.elements[1].value);
+    console.log(x.elements[2].value);
+    console.log(x.elements[3].value);
+    console.log(x.elements[4].value);
+    console.log(x.elements[5].value);
+    console.log(x.elements[6].value);
+    document.getElementById("department_holder").innerHTML = x.elements[0].value;
+    console.log("0 written!")
+    document.getElementById("dob_holder").innerHTML = x.elements[1].value;
+    console.log("1 written!")
+    document.getElementById("gender_holder").innerHTML = "male";
+    console.log("2 written!")
+    document.getElementById("address_holder").innerHTML = x.elements[4].value;
+    console.log("3 written!")
+    document.getElementById("email_holder").innerHTML = x.elements[5].value;
+    console.log("3 written!")
+    document.getElementById("ph_holder").innerHTML = x.elements[6].value;
+    console.log("4 written!")
+       
+}
+</script>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</template>
+
+
+<template name="facebook">
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text" align = "center"><b>Facebook Code for Charity!</b></h3>
+            </div>
+            <div class="panel-body">
+
+            <div class="row" align="middle">
+              <img src="/img/facebook_desp.jpg">
+            </div>
+
+              <div class="row" align="middle">
+                
+                    <p>Facebook is hosting an online fundraiser for the malnutritioned children of Africa. Your mission will be to clear a set of challenges progressively growing in level of difficulty. Every level you clear earns you brownie points which translate to money, donated to the charity supported by Facebook.</p>
+                
+              </div>
+              <div class="row" >
+                <div class="col l6 s12">
+                  <p>Language of Code: <div class="chip">HTML5</div>  <div class="chip">React</div></p>
+                </div>
+                <div class="col l6 s12">
+                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_donations">
+                  <input type="hidden" name="business" value="pratyum96@gmail.com">
+                  <input type="hidden" name="lc" value="US">
+                  <input type="hidden" name="item_name" value="Foundation for Africa">
+                  <input type="hidden" name="no_note" value="0">
+                  <input type="hidden" name="currency_code" value="USD">
+                  <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                  <input type="image" align = "right" width = "100px" height = "100px" src="/img/donate.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                  </div>
+                </div>
+            </div>
+                 <div class="panel-footer" align="center"> 
+                         <a href="/" class="waves-effect waves-light btn red">I need to go warm up for it!</a>
+                         <a href="/challenge/facebook" class="waves-effect waves-light btn blue">Challenge Accepted!</a>       
+                 </div>
+            
+          </div>
+  </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</template>
+
+
+<template name="challengefacebook">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 1. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Print "Hello World!". [ Remember it's a tricky one! ;) ]
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $1442  </div>
+                <div class="col-md-4">Contributed by you: $5 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red" >I need to go warm up for it!</a>  
+                         <a href="/challenge/facebook/2" class="waves-effect waves-light btn blue" id="q2">Bring out the big guns!</a>      
+                 </div>
+          </div>
+  </div>
+
+  <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+}
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="challengefacebook2">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 2. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to take in an integer n from the user and display the sum from 1 to n.
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $1505  </div>
+                <div class="col-md-4">Contributed by you: $10 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red">I want my mommy!</a>  
+                         <a href="/challenge/facebook/3" class="waves-effect waves-light btn blue" id="q2">You really think you got what it takes!</a>      
+                 </div>
+          </div>
+  </div>
+
+    <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+}
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="challengefacebook3">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 3. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to take in an integer n from the user and display the sum of the even numbers from 1 to n.
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $1555  </div>
+                <div class="col-md-4">Contributed by you: $15 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red">So close yet so far :( </a>  
+                         <a href="/splashscreen/facebook" class="waves-effect waves-light btn blue " id="q2">When the going get tough,the more we hack!</a>      
+                 </div>
+          </div>
+  </div>
+
+    <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+      }
+  </script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="splashscreenFacebook">
+    <br><br><br><br>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info" vertical-align = "middle">
+            <div class="panel-heading blue">
+              <h2 class="panel-title white-text" align = "middle" ><b>Congratulations!</b></h2>
+            </div>
+            <div class="panel-body" >
+              <div class="row" align = "middle">
+                <h1 style ="color: #151B54"><b>Great job!</b></h1><br>
+                <h4 style="color: #151B54"><b>$1566 raised , $30 contributed</b></h4>
+                <h3 style ="color: #151B54"><b>You helped the Foundation for Africa in our endeavour to sponsor them!</b></h3><br>
+
+                <div class="col-md-8">
+                <a class="btn btn-default blue" href="/">Want More?</a>
+                </div>
+                <div class="col-md-4">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_donations">
+                  <input type="hidden" name="business" value="pratyum96@gmail.com">
+                  <input type="hidden" name="lc" value="US">
+                  <input type="hidden" name="item_name" value="Foundation for Africa">
+                  <input type="hidden" name="no_note" value="0">
+                  <input type="hidden" name="currency_code" value="USD">
+                  <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                  <input type="image" style="max-width:100px ;max-height:100px" src="/img/donate.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>  
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>><br><br><br><br><br><br>><br><br><br><br><br><br>
+</template>
+
+<template name="paypal">
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text" align = "center"><b>Facebook Coding Challenge!</b></h3>
+            </div>
+            <div class="panel-body">
+
+            <div class="row" align="middle">
+              <img src="/img/paypal_desp.png">
+            </div>
+
+              <div class="row" align="middle">
+                
+                    <p>PayPal is organising this online competition to aid the CRY NGO. Your mission is to clear as many levels of the code challenge. Each level cleared will add to the total sum of funds being raised for this charity event.</p>
+                
+              </div>
+              <div class="row" >
+                <div class="col l6 s12">
+                  <p>Language of Code: <div class="chip">HTML5</div>  <div class="chip">React</div></p>
+                </div>
+                <div class="col l6 s12">
+                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_donations">
+                  <input type="hidden" name="business" value="pratyum96@gmail.com">
+                  <input type="hidden" name="lc" value="US">
+                  <input type="hidden" name="item_name" value="Child Rights and You">
+                  <input type="hidden" name="no_note" value="0">
+                  <input type="hidden" name="currency_code" value="USD">
+                  <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                  <input type="image" style="max-width:100px ;max-height:100px" src="/img/donate.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+
+                  </div>
+                </div>
+            </div>
+                 <div class="panel-footer" align="center"> 
+                         <a href="/" class="waves-effect waves-light btn red">I need to go warm up for it!</a>
+                         <a href="/challenge/paypal" class="waves-effect waves-light btn blue">Challenge Accepted!</a>       
+                 </div>
+            
+          </div>
+  </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</template>
+
+
+<template name="challengepaypal">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 1. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to display the prime numbers from 1 to 100
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $1442  </div>
+                <div class="col-md-4">Contributed by you: $5 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red" >I need to go warm up for it!</a>  
+                         <a href="/challenge/paypal/2" class="waves-effect waves-light btn blue" id="q2">Bring out the big guns!</a>      
+                 </div>
+          </div>
+  </div>
+
+  <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+}
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="challengepaypal2">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 2. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to take in an integer n from the user and display the sum from 1 to n.
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $1505  </div>
+                <div class="col-md-4">Contributed by you: $10 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red">I want my mommy!</a>  
+                         <a href="/challenge/paypal/3" class="waves-effect waves-light btn blue" id="q2">You really think you got what it takes!</a>      
+                 </div>
+          </div>
+  </div>
+
+    <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+}
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="challengepaypal3">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 3. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to test whether the input string is a plaindrome or not
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $1555  </div>
+                <div class="col-md-4">Contributed by you: $15 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red">So close yet so far :( </a>  
+                         <a href="/splashscreen/paypal" class="waves-effect waves-light btn blue " id="q2">When the going get tough,the more we hack!</a>      
+                 </div>
+          </div>
+  </div>
+
+    <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+      }
+  </script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="splashscreenpaypal">
+    <br><br><br><br>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info" vertical-align = "middle">
+            <div class="panel-heading blue">
+              <h2 class="panel-title white-text" align = "middle" ><b>Congratulations!</b></h2>
+            </div>
+            <div class="panel-body" >
+              <div class="row" align = "middle">
+                <h1 style ="color: #151B54"><b>Great job!</b></h1><br>
+                <h4 style="color: #151B54"><b>$1566 raised , $30 contributed</b></h4>
+                <h3 style ="color: #151B54"><b>You helped the CRY in our endeavour to sponsor them!</b></h3><br>
+
+                <div class="col-md-8">
+                <a class="btn btn-default blue" href="/">Want More?</a>
+                </div>
+                <div class="col-md-4">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_donations">
+                  <input type="hidden" name="business" value="pratyum96@gmail.com">
+                  <input type="hidden" name="lc" value="US">
+                  <input type="hidden" name="item_name" value="Child Rights and You">
+                  <input type="hidden" name="no_note" value="0">
+                  <input type="hidden" name="currency_code" value="USD">
+                  <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                  <input type="image" style="max-width:100px ;max-height:100px" src="/img/donate.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>  
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>><br><br><br><br><br><br>><br><br><br><br><br><br>
+</template>
+
+
+
+<template name="ieee">
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text" align = "center"><b>IEEE Code for Good!</b></h3>
+            </div>
+            <div class="panel-body">
+
+            <div class="row" align="middle">
+              <img src="/img/ieee_desp.jpeg" style="max-width: 350px;max-height: 350px">
+            </div>
+
+              <div class="row" align="middle">
+                
+                    <p>IEEE is conducting this interactive code challenge to support the Asian Volunteer Action Network. The funds raised will be determined by the number of people completing these code challenges. Each correct submission with be translated to charity funding on behalf of our society. </p>
+                
+              </div>
+              <div class="row" >
+                <div class="col l6 s12">
+                  <p>Language of Code: <div class="chip">HTML5</div>  <div class="chip">React</div></p>
+                </div>
+                <div class="col l6 s12">
+                  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_donations">
+                    <input type="hidden" name="business" value="pratyum96@gmail.com">
+                    <input type="hidden" name="lc" value="US">
+                    <input type="hidden" name="item_name" value="Asian Volunteer Action Network">
+                    <input type="hidden" name="no_note" value="0">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                    <input type="image" style="max-width:100px ;max-height:100px" src="/img/donate.jpg" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                  </form>
+
+                  </div>
+                </div>
+            </div>
+                 <div class="panel-footer" align="center"> 
+                         <a href="/" class="waves-effect waves-light btn red">I need to go warm up for it!</a>
+                         <a href="/challenge/ieee" class="waves-effect waves-light btn blue">Challenge Accepted!</a>       
+                 </div>
+            
+          </div>
+  </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</template>
+
+
+<template name="challengeieee">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 1. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to display the multiplication table of 12
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $10990  </div>
+                <div class="col-md-4">Contributed by you: $10 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red" >I need to go warm up for it!</a>  
+                         <a href="/challenge/ieee/2" class="waves-effect waves-light btn blue" id="q2">Bring out the big guns!</a>      
+                 </div>
+          </div>
+  </div>
+
+  <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+}
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="challengeieee2">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 2. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to traverse a list and return the largest value of the list⁠⁠⁠⁠
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $11930  </div>
+                <div class="col-md-4">Contributed by you: $15 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red">I want my mommy!</a>  
+                         <a href="/challenge/ieee/3" class="waves-effect waves-light btn blue" id="q2">You really think you got what it takes!</a>      
+                 </div>
+          </div>
+  </div>
+
+    <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+}
+  </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="challengeieee3">
+
+  <br><br>
+ <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading blue">
+              <h3 class="panel-title white-text"><b>> Question 3. </b></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                Write a program to reverse the digits of a number
+              </div>
+              <div class="row">
+                  {{> CodeMirror id="some-id" name="someName" options=editorOptions code=editorCode reactiveVar="varName"}}
+              </div>
+              <div class="row">
+                <div class="col-md-4">Funds Raised : $12020  </div>
+                <div class="col-md-4">Contributed by you: $25 </div>
+                <div class="col-md-4"><a href="#" class="waves-effect waves-light btn grey" onclick="myFunction01()" id="submit_button">Submit Code!</a></div>
+              </div>
+            </div>
+                 <div class="panel-footer" align="center">
+                        <a href="/" class="waves-effect waves-light btn red">So close yet so far :( </a>  
+                         <a href="/splashscreen/ieee" class="waves-effect waves-light btn blue " id="q2">When the going get tough,the more we hack!</a>      
+                 </div>
+          </div>
+  </div>
+
+    <script type="text/javascript">
+
+      function myFunction01() {
+        console.log("Hello");
+        document.getElementById("submit_button").className = "waves-effect waves-light btn blue";
+        document.getElementById("q2").className = "waves-effect waves-light btn green";
+      }
+  </script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</template>
+
+<template name="splashscreenieee">
+    <br><br><br><br>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info" vertical-align = "middle">
+            <div class="panel-heading blue">
+              <h2 class="panel-title white-text" align = "middle" ><b>Congratulations!</b></h2>
+            </div>
+            <div class="panel-body" >
+              <div class="row" align = "middle">
+                <h1 style ="color: #151B54"><b>Great job!</b></h1><br>
+                <h4 style="color: #151B54"><b>$12375 raised , $40 contributed</b></h4>
+                <h3 style ="color: #151B54"><b>You helped the Asian Volunteer Action Network in our endeavour to sponsor them!</b></h3><br>
+
+                <div class="col-md-8">
+                <a class="btn btn-default blue" href="/">Want More?</a>
+                </div>
+                <div class="col-md-4">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_donations">
+                <input type="hidden" name="business" value="pratyum96@gmail.com">
+                <input type="hidden" name="lc" value="US">
+                <input type="hidden" name="item_name" value="Asian Volunteer Action Network">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+                <input type="image" style="max-width:100px ;max-height:100px" src="/img/donate.jpg" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+  </div>  
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>><br><br><br><br><br><br>><br><br><br><br><br><br>
+</template>
+
+
